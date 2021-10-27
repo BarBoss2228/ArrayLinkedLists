@@ -5,30 +5,30 @@ namespace ArrayLists
     public class ArrayLists
     {
         private int[] _array;
-        private int _currentLength;
+        private int _Length;
 
         public ArrayLists()
         {
             _array = new int[10];
-            _currentLength = 0;
+            _Length = 0;
         }
 
         public ArrayLists(int value)
         {
             _array = new int[10];
-            _currentLength = 1;
+            _Length = 1;
             _array[0] = value;
         }
         public ArrayLists(int[] array)
         {
             _array = new int[10];
-            _currentLength = 0;
+            _Length = 0;
             EnlargeMyArray(array.Length);
             for (int i = 0; i < array.Length; i++)
             {
                 _array[i] = array[i];
             }
-            _currentLength += array.Length;
+            _Length += array.Length;
             
         }
 
@@ -44,7 +44,7 @@ namespace ArrayLists
                 tmp = 3 * tmp / 2;
             }
             int[] newArray = new int[tmp];
-            for (int i = 0; i < _currentLength; i++)
+            for (int i = 0; i < _Length; i++)
             {
                 newArray[i] = _array[i];
             }
@@ -53,12 +53,12 @@ namespace ArrayLists
 
         public int GetLength()
         {
-            return _currentLength;
+            return _Length;
         }
         public int[] ToArray()
         {
-            int[] newArr = new int[_currentLength];
-            for (int i = 0; i < _currentLength; i++)
+            int[] newArr = new int[_Length];
+            for (int i = 0; i < _Length; i++)
             {
                 newArr[i] = _array[i];
             }
