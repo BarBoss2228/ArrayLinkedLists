@@ -78,5 +78,20 @@ namespace ArrayListsTests
             //assert
             Assert.AreEqual(expected, actual);
         }
+        [TestCase(3, 5, new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, new int[] { 1, 2, 3 })]
+        [TestCase(0, 7, new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, new int[] { 8 })]
+        [TestCase(7, 1, new int[] { 1, 2, 3, 4, 5, 6, 7, 8 }, new int[] { 1, 2, 3, 4, 5, 6, 7 })]
+        public void RemoveAtMultipleTest(int idx, int n, int[] array1, int[] array2)
+        {
+            //arrange
+            AL actual = new AL(array1);
+            AL expected = new AL(array2);
+            //act
+            actual.RemoveAtMultiple(idx,n);
+           
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+
     }
 }
