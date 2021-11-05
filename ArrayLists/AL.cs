@@ -26,7 +26,7 @@ namespace ArrayLists
         {
             _array = new int[_minLength];
             _currentLength = 0;
-            EnlargeMyArray(array.Length);
+            EnlargeMyArray();
             for (int i = 0; i < array.Length; i++)
             {
                 _array[i] = array[i];
