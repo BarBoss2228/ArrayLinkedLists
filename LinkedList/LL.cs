@@ -311,5 +311,425 @@ namespace LinkedList
             }
 
         }
+        public void RemoveFirst(int val) //- удалить первый попавшийся элемент, значение которого равно val(вернуть индекс удалённого элемента)
+        {
+            _head = _head.Next;
+        }
+
+        public int RemoveAll(int val) // - удалить все элементы, равные val (вернуть кол-во удалённых элементов)
+        {
+            if (_head == null)
+            {
+                throw new Exception();
+            }
+            int sum = 0;
+            Node current = _head;
+            Node tmp = new Node(0);
+            tmp.Next = current;
+
+            while (current != null)
+            {
+                if (current.Value == val)
+                {
+                    if (current == _head)
+                    {
+                        RemoveFirst();
+                        sum += 1;
+                    }
+                    else if (current == _tail)
+                    {
+                        RemoveLast();
+                        sum += 1;
+                    }
+                    else
+                    {
+                        tmp.Next = current.Next;
+                        sum += 1;
+                    }
+                }
+                tmp = current;
+                current = current.Next;
+            }
+            return sum;
+        }
+        public bool Contains(int val) //- проверка, есть ли элемент в списке
+        {
+            Node current = _head;
+            while (current.Next != null)
+            {
+                if (current.Value == val)
+                {
+                    return true; ;
+                }
+                current = current.Next;
+            }
+            return false;
+
+        }
+
+        public int IndexOf(int val) //- вернёт индекс первого найденного элемента, равного val(или -1,
+                                    //если элементов с таким значением в списке нет)
+        {
+            int counter = 0;
+            Node current = _head;
+            while (current.Next != null)
+            {
+                if (current.Value == val)
+                    return counter;
+                if (current.Next == null)
+                    return -1;
+                current = current.Next;
+                counter++;
+            }
+            return counter;
+        }
+        public int GetFirst() //вернёт значение первого элемента списка
+        {
+            Node current = _head;
+            return current.Value;
+        }
+        public int GetLast() //- вернёт значение последнего элемента списка
+        {
+            Node current = _tail;
+            return current.Value;
+        }
+
+        public int Get(int idx)// - вернёт значение элемента списка c указанным индексом
+        {
+            Node current = _head;
+            int counter = 0;
+            while (current.Next != null)
+            {
+                if (counter == idx)
+                    break;
+                if (current.Next == null)
+                    throw new IndexOutOfRangeException("индекс больше количества элементов");
+                counter++;
+                current = current.Next;
+            }
+            return current.Value;
+        }
+
+        //Reverse() - изменение порядка элементов списка на обратный
+        public void Reverse()
+        {
+            Node previous = null;
+            Node current = _head;
+            Node temp;
+            while (current != null)
+            {
+                temp = current.Next;
+                current.Next = previous;
+                previous = current;
+                current = temp;
+            }
+            _head = previous;
+        }
+
+        //Max() - поиск значения максимального элемента
+        public int Max()
+        {
+            if (_head == null)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            if (_head.Next == null)
+            {
+                return _head.Value;
+            }
+
+            int max = _head.Value;
+            Node current = _head;
+            while (current.Next != null)
+            {
+                if (max < current.Value)
+                    max = current.Value;
+                current = current.Next;
+            }
+            return max;
+        }
+        public int Min() // - поиск минимального значения
+        {
+
+            if (_head == null)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            if (_head.Next == null)
+            {
+                return _head.Value;
+            }
+            int min = _head.Value;
+            Node current = _head;
+            while (current.Next != null)
+            {
+                if (min > current.Value)
+                    min = current.Value;
+                current = current.Next;
+            }
+            return min;
+        }
+
+        
+        public int IndexOfMax() //- поиск индекс максимального элемента
+        {
+            if (_head == null)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            if (_head.Next == null)
+            {
+                return 0;
+            }
+            if (_head == null)
+                return -1;
+            int max = _head.Value;
+            int counter = 0;
+            int idxOfMax = 0;
+            Node current = _head;
+            while (current.Next != null)
+            {
+                if (max < current.Value)
+                {
+                    max = current.Value;
+                    idxOfMax = counter;
+                }
+                counter++;
+                current = current.Next;
+            }
+            return idxOfMax;
+        }
+       
+        public int IndexOfMin()   // - поиск индекс минимального элемента
+        {
+            if (_head == null)
+            {
+                throw new IndexOutOfRangeException();
+            }
+            if (_head.Next == null)
+            {
+                return 0;
+            }
+            if (_head == null)
+                return -1;
+            int min = _head.Value;
+            int counter = 0;
+            int idxOfMin = 0;
+            Node current = _head;
+            while (current.Next != null)
+            {
+                if (min > current.Value)
+                {
+                    min = current.Value;
+                    idxOfMin = counter;
+                }
+                counter++;
+                current = current.Next;
+            }
+            return idxOfMin;
+        }
+        
+
+
+        public void Sort() // - сортировка по возрастанию
+        {
+            if (_head == null)
+                return;
+            Node tempPrev, prev, tempCurrent, current, temp;
+
+            tempPrev = prev = _head;
+            while (prev.Next != null)
+            {
+                tempCurrent = current = prev.Next;
+                while (current != null)
+                {
+                    if (prev.Value > current.Value)
+                    {
+                        if (prev.Next == current)
+                        {
+                            if (prev == _head)
+                            {
+                                prev.Next = current.Next;
+                                current.Next = prev;
+                                //swap:
+                                temp = prev;
+                                prev = current;
+                                current = temp;
+
+                                tempCurrent = current;
+
+                                _head = prev;
+
+                                current = current.Next;
+                            }
+
+                            else
+                            {
+                                prev.Next = current.Next;
+                                current.Next = prev;
+                                tempPrev.Next = current;
+                                // Swap
+                                temp = prev;
+                                prev = current;
+                                current = temp;
+
+                                tempCurrent = current;
+
+                                current = current.Next;
+                            }
+                        }
+                        else
+                        {
+                            if (prev == _head)
+                            {
+                                temp = prev.Next;
+                                prev.Next = current.Next;
+                                current.Next = temp;
+                                tempCurrent.Next = prev;
+
+                                temp = prev;
+                                prev = current;
+                                current = temp;
+
+                                tempCurrent = current;
+
+                                current = current.Next;
+
+                                _head = prev;
+                            }
+
+                            // prev != _head
+                            else
+                            {
+                                temp = prev.Next;
+                                prev.Next = current.Next;
+                                current.Next = temp;
+                                tempCurrent.Next = prev;
+                                tempPrev.Next = current;
+
+                                temp = prev;
+                                prev = current;
+                                current = temp;
+
+                                tempCurrent = current;
+
+                                current = current.Next;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        tempCurrent = current;
+                        current = current.Next;
+                    }
+                }
+                tempPrev = prev;
+                prev = prev.Next;
+            }
+            _tail = _head;
+            while (_tail.Next != null)
+                _tail = _tail.Next;
+        }
+
+        
+        public void SortDesc() // - сортировка по убыванию
+        {
+            if (_head == null)
+                return;
+            Node tempPrev, prev, tempCurrent, current, temp;
+
+            tempPrev = prev = _head;
+            while (prev.Next != null)
+            {
+                tempCurrent = current = prev.Next;
+                while (current != null)
+                {
+                    if (prev.Value < current.Value)
+                    {
+                        if (prev.Next == current)
+                        {
+                            if (prev == _head)
+                            {
+                                prev.Next = current.Next;
+                                current.Next = prev;
+                                //swap:
+                                temp = prev;
+                                prev = current;
+                                current = temp;
+
+                                tempCurrent = current;
+
+                                _head = prev;
+
+                                current = current.Next;
+                            }
+
+                            else
+                            {
+                                prev.Next = current.Next;
+                                current.Next = prev;
+                                tempPrev.Next = current;
+                                // Swap
+                                temp = prev;
+                                prev = current;
+                                current = temp;
+
+                                tempCurrent = current;
+
+                                current = current.Next;
+                            }
+                        }
+                        else
+                        {
+                            if (prev == _head)
+                            {
+                                temp = prev.Next;
+                                prev.Next = current.Next;
+                                current.Next = temp;
+                                tempCurrent.Next = prev;
+
+                                temp = prev;
+                                prev = current;
+                                current = temp;
+
+                                tempCurrent = current;
+
+                                current = current.Next;
+
+                                _head = prev;
+                            }
+
+                            // prev != _head
+                            else
+                            {
+                                temp = prev.Next;
+                                prev.Next = current.Next;
+                                current.Next = temp;
+                                tempCurrent.Next = prev;
+                                tempPrev.Next = current;
+
+                                temp = prev;
+                                prev = current;
+                                current = temp;
+
+                                tempCurrent = current;
+
+                                current = current.Next;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        tempCurrent = current;
+                        current = current.Next;
+                    }
+                }
+                tempPrev = prev;
+                prev = prev.Next;
+            }
+            _tail = _head;
+            while (_tail.Next != null)
+                _tail = _tail.Next;
+        }
     }
 }
