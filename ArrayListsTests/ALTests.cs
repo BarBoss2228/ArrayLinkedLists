@@ -11,6 +11,32 @@ namespace ArrayListsTests
         {
             _arrayLists = new AL();
         }
+        [TestCase(new int[] { 1, 2, 3, 4, 5 }, 5)]
+        [TestCase(new int[] { }, 0)]
+        public void GetLengthTest(int[] array, int expected)
+        {
+            //arrange           
+            AL temp = new AL(array);
+            //act            
+            int actual = temp.GetLength();
+            //assert
+            Assert.AreEqual(expected, actual);
+        }
+        [TestCase(new int[] { 9, 1, 2, 3 }, new int[] { 1, 2, 3 }, 9)]
+        [TestCase(new int[] { 0 }, new int[] { }, 0)]
+        public void AddFirstTest(int[] array, int[] array2, int value)
+        {
+            //arrange
+            AL temp2 = new AL(array);
+            AL temp = new AL(array2);
+            //act
+            temp.AddFirst(value);
+            int[] exception = temp2.ToArray();
+            int[] actual = temp.ToArray();
+            //assert
+            Assert.AreEqual(exception, actual);
+        }
+
 
         [TestCase(new int[] { 1, 2, 3, 4, 5 }, new int[] { 2, 3, 4, 5 })]
         public void RemoveFirstTest(int[] array1, int[] array2)

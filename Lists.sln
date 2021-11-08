@@ -9,6 +9,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArrayLists", "ArrayLists\Ar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrayListsTests", "ArrayListsTests\ArrayListsTests.csproj", "{10BFAFCD-3E9C-4CE2-9773-D016360B22E5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedList", "LinkedList\LinkedList.csproj", "{3ED53D0A-207A-4CB9-87F5-7DA939B47105}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinkedListTests", "LinkedListTests\LinkedListTests.csproj", "{F287A0D7-5BC6-4819-99CB-C8717BF0D663}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{10BFAFCD-3E9C-4CE2-9773-D016360B22E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{10BFAFCD-3E9C-4CE2-9773-D016360B22E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10BFAFCD-3E9C-4CE2-9773-D016360B22E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3ED53D0A-207A-4CB9-87F5-7DA939B47105}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3ED53D0A-207A-4CB9-87F5-7DA939B47105}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3ED53D0A-207A-4CB9-87F5-7DA939B47105}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3ED53D0A-207A-4CB9-87F5-7DA939B47105}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F287A0D7-5BC6-4819-99CB-C8717BF0D663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F287A0D7-5BC6-4819-99CB-C8717BF0D663}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F287A0D7-5BC6-4819-99CB-C8717BF0D663}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F287A0D7-5BC6-4819-99CB-C8717BF0D663}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
