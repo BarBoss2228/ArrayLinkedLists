@@ -15,7 +15,7 @@ namespace DoublyLinkedLists
         {
             Value = value;
             Next = null;
-            Previus = null;
+            Previous = null;
         }
     }
 }
