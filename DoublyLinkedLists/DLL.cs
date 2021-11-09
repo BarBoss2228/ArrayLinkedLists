@@ -56,15 +56,10 @@ namespace DoublyLinkedLists
                     lenght += 1;
                     current = current.Next;
                 }
+                
             }
-            if (lenght == 1 || lenght == 0)
-            {
-                return lenght;
-            }
-            else
-            {
-                return lenght - 1;
-            }
+            return lenght;
+
         }
 
         public int[] ToArray() //вернёт хранимые данные в виде массива
@@ -442,7 +437,7 @@ namespace DoublyLinkedLists
 
         public int GetLast() //- вернёт значение последнего элемента списка
         {
-            DoublyNode current = _root;
+            DoublyNode current = _tail;
             return current.Value;
         }
 
